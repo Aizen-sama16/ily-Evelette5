@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Begum ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= RESET ================= */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body{
+  margin:0;
+  font-family:'Playfair Display', serif;
+  background:radial-gradient(circle,#ffd6e6,#f7c5d7);
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#ff3f9e;
+}
+
+/* ================= FLOATING HEARTS ================= */
+
+#hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+.heart{
+  position:absolute;
+  color:#ff69b4;
+  animation:float 8s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(110vh);opacity:1;}
+  to{transform:translateY(-10vh);opacity:0;}
+}
+
+/* ================= BOOK ================= */
+
+.book {
+  width: 95%;
+  max-width: 420px;
+
+  height: 92vh;              /* responsive height */
+  margin: auto;
+
+  background: #fff6f8;
+
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(255,105,180,0.25);
+
+  display: flex;             /* center content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= PAGE ================= */
+
+.page{
+  position:absolute;
+  inset:0;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  background:rgba(255,255,255,.65);
+  border-radius:22px;
+  overflow:auto;
+  transition:.6s;
+  transform-origin:left;
+}
+
+.hidden{
+  opacity:0;
+  pointer-events:none;
+  transform:rotateY(90deg);
+}
+
+/* ================= BUTTON ================= */
+
+button{
+  background:#ff4fa3;
+  border:none;
+  padding:12px 22px;
+  border-radius:22px;
+  color:white;
+  margin:6px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.backBtn{
+  position:absolute;
+  top:10px;
+  left:10px;
+  font-size:12px;
+  background:white;
+  color:#ff4fa3;
+}
+
+/* ================= MENU ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(70px,1fr));
+  gap:20px;
+  width:100%;
+}
+
+.gameHeart{
+  font-size:40px;
+  cursor:pointer;
+}
+
+/* ================= MEMORY ================= */
+
+.memoryGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  width:100%;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  padding:14px;
+  font-size:22px;
+}
+
+/* LOVE BREAK */
+@keyframes break{
+  0%{transform:scale(1)}
+  40%{transform:scale(1.4) rotate(10deg)}
+  80%{transform:scale(1.4) rotate(-10deg)}
+  100%{transform:scale(0);opacity:0}
+}
+.break{animation:break .6s forwards}
+
+/* Mobile fixes */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  .book {
+    border-radius: 18px;
+    padding: 15px;
+  }
+
+  h1, h2 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+}
+/* Heart shaped photo */
+.heartPhotoContainer {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.heartPhoto {
+  width: 220px;
+  height: 200px;
+  object-fit: cover;
+
+  /* Heart shape */
+  clip-path: path("M 110 30 C 110 -10, 200 -10, 200 60 C 200 130, 110 180, 110 180 C 110 180, 20 130, 20 60 C 20 -10, 110 -10, 110 30 Z");
+
+  border: 5px solid hotpink;
+  box-shadow: 0 0 25px rgba(255,105,180,0.7);
+  transition: transform 0.4s ease;
+}
+
+.heartPhoto:hover {
+  transform: scale(1.05);
+}
+@keyframes glow {
+  0% { box-shadow: 0 0 10px hotpink; }
+  50% { box-shadow: 0 0 35px deeppink; }
+  100% { box-shadow: 0 0 10px hotpink; }
+}
+
+.heartPhoto {
+  animation: glow 2s infinite alternate;
+}
+button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: hotpink;
+  color: white;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<div class="book">
+
+<!-- PAGE 1 -->
+<div id="p1" class="page">
+  <h2>Will you be my Valentine ❤️</h2>
+<div class="heartPhotoContainer">
+  <img src="photo1.jpeg" class="heartPhoto">
+</div>
+  <button onclick="next('p2')">Yes 😍</button>
+  <button id="noBtn" onmouseover="runAway()">No ☹️</button>
+</div>
+
+<!-- PAGE 2 LETTER -->
+<div id="p2" class="page hidden">
+<button class="backBtn" onclick="back()">Back</button>
+
+<p id="letter">
+My Begum
+
+From the moment you came into my life something quietly beautiful changed inside me. Every day started feeling softer brighter warmer. Loving you never felt like an effort. It feels natural peaceful and completely right. You are my calm when my thoughts are heavy my comfort when the world feels loud and my happiness even on the most ordinary days.
+
+When I think about you my heart becomes gentle. Your smile feels like home. Your voice feels like safety. Your presence makes everything else disappear. I find myself thanking life for you again and again without even realizing it.
+
+I do not want just moments with you. I want mornings evenings late night talks silly jokes small fights warm hugs and a forever that never ends. I want to grow with you laugh with you and build a life where every page has your name written on it.
+
+If loving you is a dream then I never want to wake up. If life is a journey then I want to walk every step holding your hand. No matter what happens I choose you today tomorrow and always.
+
+Forever yours
+</p>
+
+<button onclick="next('menu')">Next ❤️</button>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="page hidden">
+<button class="backBtn" onclick="back()">Back</button>
+
+<h3>Choose a heart 💕</h3>
+
+<div class="grid">
+<div class="gameHeart" onclick="next('love')">❤️</div>
+<div class="gameHeart" onclick="next('memory')">💘</div>
+<div class="gameHeart" onclick="next('prank')">😈</div>
+</div>
+
+<button onclick="next('quizIntro')">Next ➜ Quiz Time ❤️</button>
+</div>
+
+<!-- LOVE -->
+<div id="love" class="page hidden">
+<button class="backBtn" onclick="back()">Back</button>
+<input type="range" min="0" max="120" value="50" oninput="meter(this)">
+<h2 id="loveVal">50%</h2>
+</div>
+
+<!-- MEMORY -->
+<div id="memory" class="page hidden">
+<button class="backBtn" onclick="back()">Back</button>
+
+<div class="memoryGrid">
+<div class="card" onclick="flip(this)">❤️</div>
+<div class="card" onclick="flip(this)">💖</div>
+<div class="card" onclick="flip(this)">❤️</div>
+<div class="card" onclick="flip(this)">💖</div>
+</div>
+</div>
+
+<!-- PRANK -->
+<div id="prank" class="page hidden">
+<button class="backBtn" onclick="back()">Back</button>
+<button onclick="next('got')">Don't press 😈</button>
+</div>
+
+<div id="got" class="page hidden">
+<button class="backBtn" onclick="back()">Back</button>
+<h2>Got you 🤣</h2>
+</div><!-- ================= QUIZ INTRO ================= -->
+<div id="quizIntro" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h2>Quiz Time 😎</h2>
+<p>Let’s see how well you know us ❤️</p>
+<button onclick="next('q1')">Start Quiz ➜</button>
+</div>
+
+<!-- Q1 -->
+<div id="q1" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h3>Who am I</h3>
+<button onclick="answer(0,'q2')">Huzzbando</button>
+<button onclick="answer(0,'q2')">Megatron</button>
+<button onclick="answer(0,'q2')">Baobie</button>
+<button onclick="answer(1,'q2')">All of the above 😋</button>
+</div>
+
+<!-- Q2 -->
+<div id="q2" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h3>Who's sorry guy apologising to</h3>
+<button onclick="answer(0,'q3')">Endia</button>
+<button onclick="answer(0,'q3')">Paxtan</button>
+<button onclick="answer(1,'q3')">Nepal</button>
+<button onclick="answer(0,'q3')">Thighland</button>
+</div>
+
+<!-- Q3 -->
+<div id="q3" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h3>Who's the Best Women in the world</h3>
+<button onclick="answer(0,'q4')">Evelette</button>
+<button onclick="answer(0,'q4')">Naploean femboy</button>
+<button onclick="answer(0,'q4')">Diva eve ji</button>
+<button onclick="answer(1,'q4')">FinalBoss of manhater my begum 😚</button>
+</div>
+
+<!-- Q4 -->
+<div id="q4" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h3>How much does Art loves eve</h3>
+<button onclick="answer(1,'q5')">Infinite</button>
+<button onclick="answer(1,'q5')">Infinite</button>
+<button onclick="answer(1,'q5')">Infinite</button>
+<button onclick="answer(1,'q5')">Infinite</button>
+</div>
+
+<!-- Q5 -->
+<div id="q5" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h3>Show belly</h3>
+<button onclick="answer(1,'q6')">Yes Fahad</button>
+<button onclick="answer(0,'q6')">Yes Art 😍</button>
+<button onclick="answer(0,'q6')">Please see my belly art 😍</button>
+<button onclick="answer(0,'q6')">Bite my belly Art</button>
+</div>
+
+<!-- Q6 -->
+<div id="q6" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h3>What's the most gansta thing about Evelette</h3>
+<button onclick="answer(0,'result')">She's savage</button>
+<button onclick="answer(0,'result')">She's diva</button>
+<button onclick="answer(0,'result')">She's the Classist</button>
+<button onclick="answer(1,'result')">She's gangsta because she's Evelette 😎</button>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+<h2 id="quizScore"></h2>
+<button onclick="resetQuiz()">Play Again ❤️</button>
+<button onclick="next('songs')">Next ➜ Favourite Songs 🎶</button>
+</div>
+<!-- ================= SONG LIST PAGE ================= -->
+
+<div id="songs" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+
+<h2>Evelette's Favourite Songs 🎀</h2>
+
+<div style="display:flex;flex-direction:column;gap:15px;margin-top:20px;">
+
+<button onclick="next('troll')">▶ Rewrite the Stars • James Arthur</button>
+
+<button onclick="next('troll')">▶ Dodie • She</button>
+
+<button onclick="next('troll')">▶ I O U • New Ridaz</button>
+
+<button onclick="next('troll')">▶ I Love You • Ash King</button>
+
+<button onclick="next('finalLove')">Next ➜ Last Page ❤️</button>
+
+</div>
+</div>
+
+
+<!-- ================= TROLL PAGE ================= -->
+
+<div id="troll" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+
+<h2 style="font-size:20px;line-height:1.6">
+Bwahaha you thought I'm so good at coding 😂<br><br>
+I can't put songs since due to lack of time 😭<br><br>
+So play it yourself baby on Spotify 💕
+</h2>
+<button onclick="playSong()">Just kidding ▶️</button>
+</div>
+<!-- ================= FINAL LOVE PAGE ================= -->
+
+<div id="finalLove" class="page hidden">
+<button class="backBtn" onclick="back()">← Back</button>
+
+<div style="overflow:auto;max-height:75vh;padding:10px 5px;line-height:1.8;font-size:15px">
+
+<p>
+My Begum,
+</p>
+
+<p>
+If you are reading this, it means you reached the last page of this little book I made for you, and honestly my heart feels full just imagining you smiling while going through all of this. Every page before this was just fun and games, but this one is only feelings. Pure feelings. No jokes. No teasing. Just me and my heart talking to you.
+</p>
+
+<p>
+I do not even know where to begin because loving you is not just one moment or one memory. It is everything. It is every day. It is every small thing. From the way you talk, the way you laugh, the way you get mad, the way you care, even the way you simply exist. Everything about you feels special to me. You are not just someone I love. You are my peace, my comfort, my safe place.
+</p>
+
+<p>
+Valentine’s Day will always be magical to me because that was the day we first met. Out of all the days in this world, fate chose that day to bring you into my life. And since that day, nothing has ever been the same. Life became softer, warmer, brighter. It feels like my world started making sense only after you walked into it.
+</p>
+
+<p>
+When I think about the future, I do not see it without you. I want to marry you. I want to hold your hand forever. I want to go everywhere with you. I want late night talks, silly fights, random jokes, long walks, shared food, shared dreams, and a lifetime of memories. I want to travel with you, laugh with you, grow old with you, and still look at you the same way I do now.
+</p>
+
+<p>
+I want to be there when you are happy. I want to be there when you are sad. I want to protect you, support you, annoy you, tease you, and love you every single day. Not just today. Not just this year. But always.
+</p>
+
+<p>
+You are my favourite person. My favourite feeling. My favourite everything.
+</p>
+
+<p>
+If someday we sit together remembering all this, I want you to know that this love is real. It is not temporary. It is not small. It is forever.
+</p>
+
+<p>
+Thank you for being mine. Thank you for loving me. Thank you for existing.
+</p>
+
+<p style="margin-top:25px;font-weight:bold">
+Thanks for your time begum I hope you liked this ❤️
+</p>
+
+</div>
+</div>
+</div>
+
+<script>
+
+/* page nav */
+let stack=["p1"];
+function next(id){
+document.getElementById(stack.at(-1)).classList.add("hidden");
+document.getElementById(id).classList.remove("hidden");
+stack.push(id);
+}
+function back(){
+if(stack.length>1){
+document.getElementById(stack.pop()).classList.add("hidden");
+document.getElementById(stack.at(-1)).classList.remove("hidden");
+}
+}
+
+/* runaway */
+function runAway(){
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*250+"px";
+noBtn.style.top=Math.random()*350+"px";
+}
+
+/* floating hearts */
+setInterval(()=>{
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+hearts.appendChild(h);
+setTimeout(()=>h.remove(),8000);
+},400);
+
+/* love break */
+function meter(s){
+loveVal.innerText=s.value+"%";
+if(s.value>100){
+loveVal.innerText="Too much 😳";
+loveVal.classList.add("break");
+}
+}
+
+/* memory */
+let first=null;
+function flip(c){
+if(!first){first=c;c.style.background="#ffd1dc";}
+else{
+if(first.innerText===c.innerText){
+first.style.visibility="hidden";c.style.visibility="hidden";
+}else first.style.background="white";
+first=null;
+}
+}
+let quizScoreCount=0;
+
+function answer(val,nextPage){
+quizScoreCount+=val;
+next(nextPage);
+
+if(nextPage==="result"){
+quizScore.innerText="Score "+quizScoreCount+"/6 ❤️";
+}
+}
+
+function resetQuiz(){
+quizScoreCount=0;
+next('q1');
+}
+function playSong() {
+  // Example: play first song
+  const songUrl = "song1.mp3"; // <-- put your actual mp3 file name here
+  const audio = new Audio(songUrl);
+  audio.play();
+
+  alert("Playing your song now 💕"); // optional cute message
+}
+</script>
+</body>
+</html>
